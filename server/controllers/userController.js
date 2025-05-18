@@ -13,9 +13,9 @@ class UserController {
     async registration(req, res, next) {
         try {
             console.log("POST /api/user/registration", req.body);
-            const { email, password, role } = req.body;
+            const { email, password, role, name } = req.body;
 
-            if (!email || !password) {
+            if (!email || !password || !name) {
                 return next(ApiError.badRequest("Некорректный email или password"));
             }
 
@@ -26,7 +26,7 @@ class UserController {
 
             const hashPassword = await bcrypt.hash(password, bcrypt.genSaltSync(10));
 
-            const user = await User.create({ email, role, password: hashPassword });
+            const user = await User.create({ email, role, name, password: hashPassword });
 
 
             if (!process.env.SECRET_KEY) {
@@ -34,7 +34,7 @@ class UserController {
             }
 
             const token = generateJwt(user.id, user.email, user.role)
-            return res.json({ token }, "52");
+            return res.json({ token }, name);
         }catch (error) {
                 console.error("Ошибка в регистрации:", error); 
                 next(error);
