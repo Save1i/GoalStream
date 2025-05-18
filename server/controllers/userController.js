@@ -34,7 +34,7 @@ class UserController {
             }
 
             const token = generateJwt(user.id, user.email, user.role)
-            return res.json({ token }, name);
+            return res.json({ token, name });
         }catch (error) {
                 console.error("Ошибка в регистрации:", error); 
                 next(error);
