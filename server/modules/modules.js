@@ -12,6 +12,8 @@ const User = sequelize.define("user", {
 const Team = sequelize.define("team", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   players: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: false },
+  name: { type: DataTypes.STRING, allowNull: false },
+  img: { type: DataTypes.STRING, allowNull: false },
   team_stat: { type: DataTypes.INTEGER },
 });
 
@@ -30,6 +32,7 @@ const Player = sequelize.define("player", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, allowNull: false },
   img: { type: DataTypes.STRING, allowNull: false },
+  teamId: { type: DataTypes.STRING, allowNull: false },
 });
 
 const SelectedPlayer = sequelize.define("selected_player", {

@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../modules/modules');
-const ApiError = require('../error/ApiError'); // Обязательно подключите это!
-require('dotenv').config(); // Обязательно вызывается в начале, чтобы SECRET_KEY был доступен
+const ApiError = require('../error/ApiError'); 
+require('dotenv').config(); 
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(
