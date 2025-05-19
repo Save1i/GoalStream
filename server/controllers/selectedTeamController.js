@@ -4,14 +4,23 @@ require('dotenv').config();
 
 class SelectTeamController {
     async create(req, res, next) {
-        const {userId, teamId} = req.body;
+ try {
+    const { userId, teamId } = req.body;
 
-        let selectTeam = await SelectedTeam.create({
-            userId,
-            teamId
-        })
+    if (!userId || !teamId) {
+      return res.status(400).json({ message: "userId и teamId обязательны" });
+    }
 
-        return res.json(selectTeam)
+    const selectTeam = await SelectedTeam.create({
+      userId,
+      teamId,
+    });
+
+    return res.status(201).json(selectTeam);
+  } catch (error) {
+    console.error("Ошибка при создании избранной команды:", error);
+    return res.status(500).json({ message: "Внутренняя ошибка сервера" });
+  }
     }
 
     async getAll(req, res, next) {

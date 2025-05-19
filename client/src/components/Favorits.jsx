@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Favorits = () => {
+const Favorits = ({userId}) => {
     useEffect(() => {
         elasticSearch()
     }, [])
@@ -11,7 +11,7 @@ const Favorits = () => {
     try {
 
       const res = await fetch(
-        `${import.meta.env.VITE_SERVER_URL}/api/selectTeam/1`
+        `${import.meta.env.VITE_SERVER_URL}/api/selectTeam/${userId}`
       );
       const data = await res.json();
       if (Array.isArray(data)) {
