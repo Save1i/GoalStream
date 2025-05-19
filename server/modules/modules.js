@@ -32,6 +32,7 @@ const SelectedTeam = sequelize.define("selected_team", {
 const Player = sequelize.define("player", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, allowNull: false },
+  number: { type: DataTypes.STRING, defaultValue: "1"},
   img: { type: DataTypes.STRING, allowNull: false },
   teamId: { type: DataTypes.STRING, allowNull: false },
 });

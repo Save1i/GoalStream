@@ -1,5 +1,4 @@
 const {Team} = require("../modules/modules");
-const ApiError = require("../error/ApiError");
 require('dotenv').config(); 
 
 class TeamController {

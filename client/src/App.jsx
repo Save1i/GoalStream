@@ -1,36 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Suspense } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { publicRoutes } from "./routes";
+import { HOME_ROUTE } from "./utils/consts";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Header from './components/Header'; // путь измените, если нужно
+
+const App = () => {
+  const isAuth = true;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <img src="https://imgur.com/H1cJ06r.jpg" alt="" srcset="" />
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Suspense fallback={<div>Загрузка...</div>}>
+      <Header />
+      <Routes>
+      {publicRoutes.map((route) => (
+        <Route key={route.path} path={route.path} element={<route.Component />} />
+      ))}
 
-export default App
+
+
+
+        <Route
+          path="/dashboard"
+          element={isAuth ? <div>Dashboard</div> : <Navigate to={HOME_ROUTE} />}
+        />
+
+        <Route path="/" element={<Navigate to={HOME_ROUTE} />} />
+        <Route path="*" element={<div>404 — Страница не найдена</div>} />
+      </Routes>
+    </Suspense>
+  );
+};
+
+
+export default App;

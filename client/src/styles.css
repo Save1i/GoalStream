@@ -1,0 +1,42 @@
+.form-control::placeholder {
+  color: #ccc;
+  opacity: 1; /* для Firefox */
+}
+
+
+.navbar {
+  background-color: #ffffff;
+}
+
+.navbar-brand:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.profile-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 1rem 0;
+}
+
+.settings-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.settings-link:hover {
+  color: #007bff;
+}
