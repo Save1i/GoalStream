@@ -5,7 +5,7 @@ const Favorits = ({userId}) => {
         elasticSearch()
     }, [])
 
-    const [players, setPlayers] = useState([])
+    const [teams, setTeams] = useState([])
 
     const elasticSearch = async () => {
     try {
@@ -15,9 +15,9 @@ const Favorits = ({userId}) => {
       );
       const data = await res.json();
       if (Array.isArray(data)) {
-        setPlayers(data);
+        setTeams(data);
       } else {
-        setPlayers([]);
+        setTeams([]);
       }
 
       console.log(data)
@@ -29,12 +29,15 @@ const Favorits = ({userId}) => {
   return (
     <div>
       <p>Избранное</p>
-      {players.map((player) => (
-        <div>
-            <img src={player.img} alt="player" srcset="" />
+      {teams.map((team, index) => (
+        <div key={index}>
+            <img src={team.img} alt="team" />
             <div>
-                <p>{player.number}</p>
-                <p>{player.name}</p>
+                <p>{team.name}</p>
+                <div>
+                  <img src={team.country_img} alt="" />
+                  <p>{team.team_country}</p>
+                </div>
             </div>
         </div>
       ))}

@@ -24,8 +24,8 @@ const start = async () => {
   try {
     console.log(process.env.DATABASE_URL);  // Убедитесь, что переменные окружения правильные
     await sequelize.authenticate();
-    // await sequelize.sync({ alter: true });
-    await sequelize.sync();
+    await sequelize.sync({ alter: true });
+    // await sequelize.sync();
 // 
     
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

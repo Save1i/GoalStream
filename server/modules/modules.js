@@ -16,6 +16,8 @@ const Team = sequelize.define("team", {
   name: { type: DataTypes.STRING, allowNull: false },
   img: { type: DataTypes.STRING, allowNull: false },
   team_stat: { type: DataTypes.INTEGER },
+  team_country: { type: DataTypes.STRING, allowNull: false, defaultValue: "Англия" },
+  country_img: { type: DataTypes.STRING, allowNull: false, defaultValue: "https://imgur.com/mlfdDUy.jpg" },
 });
 
 const SelectedTeam = sequelize.define("selected_team", {
@@ -35,6 +37,7 @@ const Player = sequelize.define("player", {
   number: { type: DataTypes.STRING, defaultValue: "1"},
   img: { type: DataTypes.STRING, allowNull: false },
   teamId: { type: DataTypes.STRING, allowNull: false },
+  player_stat: { type: DataTypes.STRING, defaultValue: "1"},
 });
 
 const SelectedPlayer = sequelize.define("selected_player", {
