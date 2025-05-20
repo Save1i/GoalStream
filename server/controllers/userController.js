@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User } = require('../modules/modules');
+const ApiError = require("../error/apiError")
 require('dotenv').config(); 
 
 const generateJwt = (id, email, role) => {
