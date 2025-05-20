@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar style={{backgroundColor: "#17CDFF"}} expand="lg" className="mb-4 shadow-sm">
+    <Navbar style={{backgroundColor: "#17CDFF"}} expand="lg" className="mb-2 shadow-sm">
       <Container className="d-flex justify-content-between align-items-center">
         <Navbar.Brand
           style={{ cursor: 'pointer', fontWeight: 'bold' }}
