@@ -10,11 +10,11 @@ import '../styles.css';
 
 
 
-const Header = () => {
+const NavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar style={{backgroundColor: "#17CDFF"}} expand="lg" className="mb-2 shadow-sm">
+    <Navbar style={{backgroundColor: "#17CDFF"}} expand="lg" className="mb-5 shadow-sm">
       <Container className="d-flex justify-content-between align-items-center">
         <Navbar.Brand
           style={{ cursor: 'pointer', fontWeight: 'bold' }}
@@ -41,4 +41,4 @@ const Header = () => {
   );
 };
 
-export default Header
+export default NavBar
